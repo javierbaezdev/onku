@@ -1,0 +1,13 @@
+/* export { default as Linkedin } from './Linkedin'
+export { default as View360 } from './View360'
+export { default as MenuDeep } from './MenuDeep'
+export { default as X } from './X'
+export { default as Chile } from './Chile'
+export { default as Us } from './Us'
+export { default as DeviceImac } from './DeviceImac'
+export { default as Sun } from './Sun'
+export { default as Moon } from './Moon'
+export { default as Mail } from './Mail'
+export { default as CircleChevronUp } from './CircleChevronUp'
+export { default as Github } from './Github'
+ */
