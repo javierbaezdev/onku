@@ -1,5 +1,15 @@
+import { Suspense } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import RenderRoutes from './routes/renderRoutes';
+
 const App = () => {
-  return <div className="bg-black-200 font-bold">Hola mundo</div>;
+  return (
+    <Suspense fallback={<>LOADING</>}>
+      <Router>
+        <RenderRoutes />
+      </Router>
+    </Suspense>
+  );
 };
 
 export default App;
