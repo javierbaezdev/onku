@@ -12,10 +12,13 @@
   "dependencies": {
     "@fontsource-variable/onest": "^5.0.3",
     "@midudev/tailwind-animations": "^0.0.7",
+    "@tanstack/react-query-devtools": "^5.28.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.22.3",
     "tailwind-merge": "^2.2.1",
     "zustand": "^4.5.1"
