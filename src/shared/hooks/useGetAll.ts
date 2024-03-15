@@ -15,7 +15,7 @@ interface FetchAllItemsProps<T, R> extends GetAllProps {
 
 interface AdapterGetAllProps {
   key?: Key
-  endPoint: EndPoint
+  endPoint?: EndPoint
 }
 const adapterParamsGetAll = ({ key, endPoint }: AdapterGetAllProps) => {
   const formatKey = key || endPoint
@@ -47,7 +47,7 @@ export default function useGetAll<T, R>({
   queryConfig,
   adapterData,
 }: UseGetAllProps<T, R>): UseQueryResult<R> {
-  const { endPoint } = getAllProps
+  const endPoint = getAllProps.endPoint
   const { formatKey } = adapterParamsGetAll({
     key,
     endPoint,

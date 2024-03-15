@@ -5,7 +5,7 @@ export type EndPoint = string
 export type Id = string | number
 
 export interface Base {
-  endPoint: EndPoint
+  endPoint?: EndPoint
   contentType?: string
 }
 
@@ -23,7 +23,9 @@ const getAll = async ({ endPoint, queries }: GetAllProps) => {
   const queryObj = formatQuery(queries)
 
   try {
-    const { data } = await axios.get(`${endPoint}`, { params: queryObj })
+    const { data } = await axios.get(endPoint ? `${endPoint}` : '', {
+      params: queryObj,
+    })
 
     return data
   } catch (error) {
@@ -33,7 +35,7 @@ const getAll = async ({ endPoint, queries }: GetAllProps) => {
 
 const getOne = async ({ endPoint, id }: GetOneProps) => {
   try {
-    const { data } = await axios.get(`${endPoint}/${id}`)
+    const { data } = await axios.get(`${endPoint ? endPoint : ''}/${id}`)
     return data
   } catch (error) {
     return await Promise.reject(error)
