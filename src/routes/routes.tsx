@@ -1,6 +1,6 @@
-import { PATHS } from '@/modules/player/paths';
-import { Navigate } from 'react-router-dom';
-import playerRoutes from '@/modules/player/router';
+import { PATHS } from '@/modules/PlayList/paths'
+import { Navigate } from 'react-router-dom'
+import playerRoutes from '@/modules/PlayList/router'
 /* import { NotFound } from '@/shared/pages' */
 
 const generalsRoutes = [
@@ -20,8 +20,8 @@ const generalsRoutes = [
     key: '404',
     element: () => <NotFound />,
   }, */
-];
+]
 
-const routes = [...generalsRoutes, ...playerRoutes];
+const routes = [...generalsRoutes, ...playerRoutes]
 
-export default routes;
+export default routes
