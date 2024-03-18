@@ -22,9 +22,12 @@ const Alert = ({ msg, description, actionFunc, actionTextButton }: Props) => {
 
       {description && <div className='mb-4 mt-2 text-sm'>{description}</div>}
 
-      {actionFunc && actionTextButton && (
+      {actionTextButton && (
         <div className='flex justify-end'>
-          <button className='border-carissma-800 hover:bg-carissma-600/20 rounded-md border p-2'>
+          <button
+            className='rounded-md border border-carissma-800 p-2 hover:bg-carissma-600/20'
+            onClick={actionFunc && actionFunc}
+          >
             {actionTextButton}
           </button>
         </div>
