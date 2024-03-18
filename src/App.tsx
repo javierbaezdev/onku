@@ -1,20 +1,11 @@
 import { Suspense } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 import RenderRoutes from './routes/renderRoutes'
-import { useGetAll } from '@/shared/hooks'
-import { PATHS } from './modules/PlayList/paths'
+import { FullScreen } from './shared/components/loaders'
 
 const App = () => {
-  const { data } = useGetAll({
-    getAllProps: {
-      endPoint: PATHS.PLAY_LISTS.API,
-    },
-    key: PATHS.PLAY_LISTS.KEY,
-  })
-  console.log({ data })
-
   return (
-    <Suspense fallback={<>LOADING</>}>
+    <Suspense fallback={<FullScreen />}>
       <Router>
         <RenderRoutes />
       </Router>

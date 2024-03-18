@@ -1,1 +1,1 @@
-export { default as IrregularButton } from './IrregularButton'
+export { default as PlayButton } from './PlayButton'
