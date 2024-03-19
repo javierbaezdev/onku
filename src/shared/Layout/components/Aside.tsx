@@ -22,12 +22,13 @@ const Aside = () => {
           </a>
         </div>
 
-        <div className='flex flex-row gap-6 rounded-md bg-cod-gray-950 p-6  pb-6 text-cod-gray-300'>
+        <div className='flex flex-row gap-6 rounded-t-md bg-cod-gray-950 p-6  pb-6 text-cod-gray-300'>
           <Library />
           <h3 className='text-md'>Tus favoritos</h3>
         </div>
       </div>
-      <div className='content-pages mr-0.5 flex h-full flex-col gap-4 overflow-hidden rounded-md bg-cod-gray-950 pb-4 pl-4 pr-[8px] hover:overflow-auto hover:pr-0'>
+
+      <div className='content-pages mr-1 flex h-full flex-col gap-4 overflow-hidden  rounded-b-md bg-cod-gray-950 pb-4 pl-4 pr-[8px] hover:overflow-auto hover:pr-0'>
         <FavoriteSongListCard />
         <FavoriteSongListCard />
         <FavoriteSongListCard />
