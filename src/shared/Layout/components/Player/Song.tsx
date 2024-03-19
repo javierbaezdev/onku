@@ -12,10 +12,10 @@ const Song = () => {
         src={img_test}
       />
       <div className='flex flex-col gap-2'>
-        <h3 className='text-sm text-cod-gray-200'>
+        <h3 className='line-clamp-1 text-sm text-cod-gray-200'>
           episode018「野生動物(N3)」
         </h3>
-        <span className='text-xs text-cod-gray-400'>
+        <span className='line-clamp-1 text-xs text-cod-gray-400'>
           Let’s Talk in Japanese!
         </span>
       </div>

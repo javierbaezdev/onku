@@ -13,3 +13,29 @@ html {
     scroll-behavior: auto;
   }
 }
+
+.content-pages {
+  --sb-track-color: #454545;
+  --sb-thumb-color: #888888;
+  --sb-size: 8px;
+}
+
+.content-pages::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.content-pages::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.content-pages::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .content-pages {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

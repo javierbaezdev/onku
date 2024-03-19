@@ -3,7 +3,7 @@ import { PATHS } from '../paths'
 import PlayListCard from '@/shared/components/PlayListCard'
 import { type PlayList } from '@/modules/PlayList/types'
 import { Alert } from '@/shared/components'
-import { Min01 } from '@/shared/components/loaders'
+import { PlayListSkeleton } from '@/shared/components/loaders/skeletons'
 
 const PlayListComponent = () => {
   const {
@@ -19,7 +19,10 @@ const PlayListComponent = () => {
   })
 
   return (
-    <>
+    <div className='flex flex-col gap-2'>
+      <h1 className='pl-2 text-lg font-semibold text-cod-gray-200'>
+        Lista de reproducciones
+      </h1>
       {!isLoading && isError && (
         <Alert
           msg='¡Error al cargar listas de reproducción!'
@@ -28,13 +31,13 @@ const PlayListComponent = () => {
           actionTextButton='Reintentar'
         />
       )}
-      {isLoading && <Min01 />}
+      {isLoading && <PlayListSkeleton />}
       {!isError && !isLoading && playLists && (
-        <div className='flex flex-grow flex-row gap-2'>
+        <div className='flex flex-row flex-wrap gap-2'>
           {playLists?.map((item) => <PlayListCard key={item.id} {...item} />)}
         </div>
       )}
-    </>
+    </div>
   )
 }
 
