@@ -1,5 +1,9 @@
 export const PATHS = {
   BASE_MODULE: { CLI: 'play-lists', API: '', KEY: 'PLAY_LISTS' },
-  PLAY_LISTS: { CLI: '', API: '/play-lists', KEY: 'PLAY_LISTS' },
-  SONG_DETAILS: { CLI: '', API: '/song-detail', KEY: 'SONG_DETAILS' },
+  PLAY_LISTS: { CLI: 'play-lists', API: '/play-lists', KEY: 'PLAY_LISTS' },
+  PLAY_LISTS_DETAILS: {
+    CLI: 'details',
+    API: '/play-lists',
+    KEY: 'PLAY_LISTS_DETAILS',
+  },
 }

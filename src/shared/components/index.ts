@@ -1,3 +1,4 @@
 export { default as TimeFormat } from './TimeFormat'
 export { default as Alert } from './Alert'
 export { default as FavoriteSongListCard } from './FavoriteSongListCard'
+export { default as Marquee } from './Marquee'

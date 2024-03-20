@@ -37,6 +37,16 @@ export default {
           950: '#500719', // rose
         },
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '50%': { transform: 'translateX(-80%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
+      },
     },
   },
   plugins: [animations],
