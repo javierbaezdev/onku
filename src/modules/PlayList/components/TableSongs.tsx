@@ -20,11 +20,29 @@ const songs_test = [
     cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
     url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
   },
+  {
+    id: 'm5Da9wj4d',
+    name: 'Legend Of The Martial Artist',
+    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
+    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
+  },
+  {
+    id: 'm5Da9wj4f',
+    name: 'Legend Of The Martial Artist',
+    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
+    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
+  },
+  {
+    id: 'm5Da9wj4g',
+    name: 'Legend Of The Martial Artist',
+    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
+    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
+  },
 ]
 
 const TableSongs = () => {
   return (
-    <div className='relative overflow-x-auto text-cod-gray-400'>
+    <div className='content-pages relative animate-fade-in overflow-x-auto text-cod-gray-400 animate-delay-300'>
       <table className='w-full text-left text-sm rtl:text-right'>
         <thead className='text-xs uppercase '>
           <tr>

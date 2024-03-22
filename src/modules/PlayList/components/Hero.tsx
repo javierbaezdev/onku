@@ -5,7 +5,7 @@ const img_test =
 
 const Hero = () => {
   return (
-    <div className='flex flex-row gap-4 p-4 '>
+    <div className='flex animate-fade-in flex-row gap-4 p-4 animate-delay-200'>
       <div className='md:min-w-[200px]'>
         <img
           className='aspect-square rounded-md'

@@ -10,7 +10,8 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       refetchOnMount: false,
-      retry: 0,
+      retry: 2,
+      cacheTime: Infinity,
     },
   },
 })

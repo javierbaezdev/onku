@@ -3,16 +3,25 @@ import { PlayButton } from './buttons'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { PATHS } from '@/modules/PlayList/paths'
 
 interface Props extends PlayList {}
 
-const PlayListCard = ({ cover, name }: Props) => {
+const PlayListCard = ({ cover, name, id }: Props) => {
   const [isHover, setIsHover] = useState(false)
+  const navigate = useNavigate()
+
+  const goDetails = () => {
+    navigate(`/${PATHS.PLAY_LISTS.CLI}/${PATHS.PLAY_LISTS_DETAILS.CLI}/${id}`)
+  }
+
   return (
     <div
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      className='flex w-40 flex-col items-center justify-center gap-2 rounded-md p-2 text-start hover:bg-cod-gray-600/30'
+      onClick={() => goDetails()}
+      className='flex w-40 cursor-pointer flex-col items-center justify-center gap-2 rounded-md p-2 text-start hover:bg-cod-gray-600/30'
     >
       <div className='relative'>
         <img
@@ -24,7 +33,7 @@ const PlayListCard = ({ cover, name }: Props) => {
         />
         <PlayButton
           className={twMerge(
-            clsx('bg-carissma-600 r absolute bottom-2 right-2 hidden', {
+            clsx('r absolute bottom-2 right-2 hidden bg-carissma-600', {
               'flex scale-105 transition': isHover,
             }),
           )}
