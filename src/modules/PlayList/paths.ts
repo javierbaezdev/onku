@@ -6,4 +6,9 @@ export const PATHS = {
     API: '/play-lists',
     KEY: 'PLAY_LISTS_DETAILS',
   },
+  FAVORITES: {
+    CLI: '',
+    API: '/favorites',
+    KEY: 'FAVORITES',
+  },
 }

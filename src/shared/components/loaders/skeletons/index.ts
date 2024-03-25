@@ -1,2 +1,7 @@
 export { default as PlayListCard } from './PlayListCard'
 export { default as PlayListSkeleton } from './PlayListSkeleton'
+export { default as Hero } from './Hero'
+export { default as TableSong } from './TableSong'
+export { default as PlayListDetailsSkeleton } from './PlayListDetailsSkeleton'
+export { default as FavoriteCard } from './FavoriteCard'
+export { default as FavoriteList } from './FavoriteList'

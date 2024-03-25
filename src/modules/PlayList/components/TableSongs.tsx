@@ -1,46 +1,30 @@
-import { FavoriteSongListCard } from '@/shared/components'
+import { Alert, FavoriteSongListCard } from '@/shared/components'
 import { Heart } from '@/shared/icons'
+import { Song } from '../types'
+import { useAppPersistStore } from '@/store'
+import { twMerge } from 'tailwind-merge'
+import { clsx } from 'clsx'
+import { DurationSong } from '.'
 
-const songs_test = [
-  {
-    id: 'K3g3hkPB',
-    name: 'Hunter x Hunter - Departure! (Opening) Lofi Hip Hop Remix Remix Remix Remix',
-    cover: 'https://od.lk/s/NjZfNTE4NDEzMThf/hxh%20%281%29.webp',
-    url: 'https://od.lk/s/NjZfNTE4NDEwNzNf/Hunter%20x%20Hunter%20-%20Departure%21%20%28Opening%29%20Lofi%20Hip%20Hop%20Remix.mp3',
-  },
-  {
-    id: 'iqGhZryo',
-    name: 'Zoldyck Family Theme',
-    cover: 'https://od.lk/s/NjZfNTE4NDEyNzlf/killua.webp',
-    url: 'https://od.lk/s/NjZfNTE4NDEwOTBf/Hunter%20X%20Hunter%202011%20-%20Zoldyck%20Family%20Theme.mp3',
-  },
-  {
-    id: 'm5Da9wj4',
-    name: 'Legend Of The Martial Artist',
-    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
-    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
-  },
-  {
-    id: 'm5Da9wj4d',
-    name: 'Legend Of The Martial Artist',
-    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
-    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
-  },
-  {
-    id: 'm5Da9wj4f',
-    name: 'Legend Of The Martial Artist',
-    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
-    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
-  },
-  {
-    id: 'm5Da9wj4g',
-    name: 'Legend Of The Martial Artist',
-    cover: 'https://od.lk/s/NjZfNTE4NDEzMDRf/gon.webp',
-    url: 'https://od.lk/s/NjZfNTE4NDExMDVf/Hunter%20x%20Hunter%20OST%203_%2010%20-%20In%20The%20Palace~Lamentoso.mp3',
-  },
-]
+interface Props {
+  songs?: Song[]
+}
 
-const TableSongs = () => {
+const TableSongs = ({ songs }: Props) => {
+  const { favoritesSongsIds, addNewFavoriteId, deleteFavoriteId } =
+    useAppPersistStore((store) => store)
+  if (!songs) {
+    return <Alert msg='¡La listas de reproducción esta vacía!' />
+  }
+
+  const handleFavoriteSong = (songId: string) => {
+    if (favoritesSongsIds.includes(songId)) {
+      deleteFavoriteId(songId)
+    } else {
+      addNewFavoriteId(songId)
+    }
+  }
+
   return (
     <div className='content-pages relative animate-fade-in overflow-x-auto text-cod-gray-400 animate-delay-300'>
       <table className='w-full text-left text-sm rtl:text-right'>
@@ -60,7 +44,7 @@ const TableSongs = () => {
         </thead>
 
         <tbody>
-          {songs_test?.map((song, index) => (
+          {songs?.map((song, index) => (
             <tr key={song.id}>
               <td scope='row' className='px-6 py-6'>
                 {index + 1}
@@ -68,9 +52,19 @@ const TableSongs = () => {
               <td className='max-w-44 pl-4'>
                 <FavoriteSongListCard cover={song.cover} name={song.name} />
               </td>
-              <td className='px-6 py-6'>14:56</td>
               <td className='px-6 py-6'>
-                <Heart className='text-carissma-600' />
+                <DurationSong urlSong={song.url} />
+              </td>
+              <td className='px-6 py-6'>
+                <Heart
+                  onClick={() => handleFavoriteSong(song.id)}
+                  className={twMerge(
+                    clsx('cursor-pointer text-cod-gray-400 hover:scale-110', {
+                      'animate-tada text-carissma-600':
+                        favoritesSongsIds.includes(song.id),
+                    }),
+                  )}
+                />
               </td>
             </tr>
           ))}

@@ -17,7 +17,8 @@ const Marquee = ({ children, className, classNameContainer }: Props) => {
       <h1
         className={twMerge(
           clsx('line-clamp-1 py-1 text-cod-gray-200', className, {
-            ' animate-marquee inline-block whitespace-nowrap': isHover,
+            ' inline-block animate-marquee overflow-hidden whitespace-nowrap':
+              isHover,
           }),
         )}
       >

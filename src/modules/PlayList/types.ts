@@ -11,3 +11,8 @@ export interface PlayList {
   cover: string
   songs: Song[]
 }
+
+export interface Favorite extends Song {
+  playListId: string
+  playList: { name: string }
+}

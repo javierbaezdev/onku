@@ -1,11 +1,30 @@
 import { PATHS } from '@/modules/PlayList/paths'
-import { FavoriteSongListCard } from '@/shared/components'
+import { Favorite } from '@/modules/PlayList/types'
+import { Alert, FavoriteSongListCard } from '@/shared/components'
+import { FavoriteList } from '@/shared/components/loaders/skeletons'
+import { useGetAll } from '@/shared/hooks'
 import { Home, Library } from '@/shared/icons'
+import { useAppPersistStore } from '@/store'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 const Aside = () => {
   const location = useLocation()
   const navigate = useNavigate()
+  const favoritesSongsIds = useAppPersistStore(
+    (store) => store.favoritesSongsIds,
+  )
+
+  const {
+    data: favorites,
+    isLoading,
+    isError,
+  } = useGetAll<Favorite[], Favorite[]>({
+    getAllProps: {
+      endPoint: PATHS.FAVORITES.API,
+      queries: { songsIds: JSON.stringify(favoritesSongsIds) },
+    },
+    key: PATHS.FAVORITES.KEY,
+  })
 
   const goHome = () => {
     if (location.pathname !== `/${PATHS.PLAY_LISTS}`) {
@@ -28,8 +47,21 @@ const Aside = () => {
         </div>
       </div>
 
-      <div className='content-pages mb-2 ml-4 mr-2 flex h-full flex-col gap-4 overflow-hidden bg-cod-gray-950  hover:overflow-y-auto'>
-        <FavoriteSongListCard />
+      <div className='content-pages mb-2 ml-4 mr-2 flex h-full flex-col gap-4 overflow-hidden bg-cod-gray-950 hover:overflow-y-auto'>
+        {isLoading && isError && (
+          <Alert msg='¡Lista de favoritos no disponible!' />
+        )}
+        {isLoading && <FavoriteList />}
+        {favorites?.length === 0 && (
+          <Alert msg='¡Lista de favoritos está vacía!' />
+        )}
+        {favorites?.map(({ cover, name, playList }) => (
+          <FavoriteSongListCard
+            cover={cover}
+            name={name}
+            playListName={playList.name}
+          />
+        ))}
       </div>
     </div>
   )
