@@ -50,7 +50,11 @@ const TableSongs = ({ songs }: Props) => {
                 {index + 1}
               </td>
               <td className='max-w-44 pl-4'>
-                <FavoriteSongListCard cover={song.cover} name={song.name} />
+                <FavoriteSongListCard
+                  cover={song.cover}
+                  name={song.name}
+                  playListName=''
+                />
               </td>
               <td className='px-6 py-6'>
                 <DurationSong urlSong={song.url} />
