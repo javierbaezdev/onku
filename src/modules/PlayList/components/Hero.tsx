@@ -3,6 +3,7 @@ import { Marquee } from '@/shared/components'
 interface Props {
   cover?: string
   playListName?: string
+  playListToStore: (indexSong?: number) => void
 }
 
 const Hero = ({ cover, playListName }: Props) => {
@@ -15,7 +16,7 @@ const Hero = ({ cover, playListName }: Props) => {
             width={200}
             height={200}
             src={cover}
-            loading='lazy'
+            loading='eager'
           />
         )}
       </div>

@@ -5,9 +5,14 @@ import { useGetAll } from '@/shared/hooks'
 import { PlayList } from '../types'
 import { Alert } from '@/shared/components'
 import { PlayListDetailsSkeleton } from '@/shared/components/loaders/skeletons'
+import { useEffect } from 'react'
+import { useAppStore } from '@/store'
 
 const PlayListDetails = () => {
   const { playListId } = useParams()
+  const { currentMusic, setCurrentMusic, playerBarControl } = useAppStore(
+    (store) => store,
+  )
   const {
     data: playList,
     isError,
@@ -23,6 +28,24 @@ const PlayListDetails = () => {
     },
     key: PATHS.PLAY_LISTS_DETAILS.KEY,
   })
+
+  const playListToStore = (indexSong: number = 0) => {
+    if (playList) {
+      setCurrentMusic({
+        playList: playList,
+        songs: playList.songs,
+        song: playList.songs[indexSong],
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (!playerBarControl.isPlaying) {
+      if (currentMusic?.playList?.id !== playList?.id) {
+        playListToStore()
+      }
+    }
+  }, [playList, currentMusic])
 
   return (
     <div className='flex h-full animate-fade-in flex-col gap-2 animate-delay-100'>
@@ -42,8 +65,16 @@ const PlayListDetails = () => {
       )}
       {!isError && !isLoading && playList && (
         <>
-          <Hero cover={playList?.cover} playListName={playList?.name} />
-          <TableSongs songs={playList?.songs} />
+          <Header />
+          <Hero
+            cover={playList?.cover}
+            playListName={playList?.name}
+            playListToStore={playListToStore}
+          />
+          <TableSongs
+            songs={playList?.songs}
+            playListToStore={playListToStore}
+          />
         </>
       )}
     </div>

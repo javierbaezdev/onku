@@ -1,10 +1,25 @@
+import { twMerge } from 'tailwind-merge'
 import Song from './Song'
 import TimeLine from './TimeLine'
 import VolumeLine from './VolumeLine'
+import { clsx } from 'clsx'
+import { useAppStore } from '@/store'
+import { useMemo } from 'react'
 
 const Player = () => {
+  const currentMusic = useAppStore((store) => store.currentMusic)
+
+  const haveSong = useMemo(() => {
+    return Boolean(currentMusic?.song)
+  }, [currentMusic?.song])
   return (
-    <div className='flex h-full items-center gap-2'>
+    <div
+      className={twMerge(
+        clsx('flex h-full items-center gap-2', {
+          'pointer-events-none opacity-40': !haveSong,
+        }),
+      )}
+    >
       <div className='md:w-2/6'>
         <Song />
       </div>

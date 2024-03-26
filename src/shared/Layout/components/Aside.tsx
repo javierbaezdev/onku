@@ -4,11 +4,15 @@ import { Alert, FavoriteSongListCard } from '@/shared/components'
 import { Min01 } from '@/shared/components/loaders'
 import { useGetAll } from '@/shared/hooks'
 import { Home, Library } from '@/shared/icons'
-import { useAppPersistStore } from '@/store'
+import { useAppPersistStore, useAppStore } from '@/store'
+import { useEffect } from 'react'
 
 const Aside = () => {
   const favoritesSongsIds = useAppPersistStore(
     (store) => store.favoritesSongsIds,
+  )
+  const { currentMusic, playerBarControl, setCurrentMusic } = useAppStore(
+    (store) => store,
   )
 
   const {
@@ -22,6 +26,14 @@ const Aside = () => {
     },
     key: PATHS.FAVORITES.KEY,
   })
+
+  useEffect(() => {
+    if (favorites) {
+      setCurrentMusic({
+        favoriteSongs: favorites,
+      })
+    }
+  }, [favorites])
 
   const goHome = () => {
     if (window.location.pathname !== `/${PATHS.PLAY_LISTS}`) {
@@ -56,11 +68,17 @@ const Aside = () => {
         {favorites?.length === 0 && (
           <Alert msg='¡Lista de favoritos está vacía!' />
         )}
-        {favorites?.map(({ cover, name, playList }) => (
+        {favorites?.map(({ cover, name, playList, id }) => (
           <FavoriteSongListCard
+            id={id}
             cover={cover}
             name={name}
             playListName={playList.name}
+            classNameMarquee={
+              currentMusic?.song?.id === id && playerBarControl.isPlaying
+                ? 'text-carissma-600'
+                : undefined
+            }
           />
         ))}
       </div>

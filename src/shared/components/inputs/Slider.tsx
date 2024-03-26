@@ -14,7 +14,7 @@ const Slider = forwardRef<
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       className={clsx(
-        'relative flex h-1 w-full touch-none select-none items-center rounded-full bg-cod-gray-500',
+        'group relative flex h-1 w-full touch-none select-none items-center rounded-full bg-cod-gray-500',
         className,
       )}
       {...props}

@@ -4,6 +4,7 @@ export interface Volume {
   min: number
   lastVolume?: number
   isMute: boolean
+  value?: number
 }
 
 export interface PlayerBar {
@@ -11,4 +12,7 @@ export interface PlayerBar {
   max: number
   min: number
   isPlaying: boolean
+  currentTime: number
+  isRandom: boolean
+  isLoop: boolean
 }

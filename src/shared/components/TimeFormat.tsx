@@ -1,5 +1,15 @@
-const TimeFormat = () => {
-  return <span className='text-[10px] font-light text-cod-gray-300'>0:00</span>
+import formatTime from '../utils/formatTime'
+
+interface Props {
+  value: number
+}
+
+const TimeFormat = ({ value }: Props) => {
+  return (
+    <span className='text-[10px] font-light text-cod-gray-300'>
+      {formatTime(value)}
+    </span>
+  )
 }
 
 export default TimeFormat
