@@ -1,40 +1,33 @@
 .loader_one {
-  width: 8px;
-  height: 40px;
-  border-radius: 4px;
-  display: block;
-  margin: 20px auto;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
   position: relative;
-  background: currentColor;
-  color: #fff;
-  box-sizing: border-box;
-  animation: animloader 0.3s 0.3s linear infinite alternate;
 }
-
 .loader_one::after,
 .loader_one::before {
   content: '';
-  width: 8px;
-  height: 40px;
-  border-radius: 4px;
-  background: currentColor;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 20px;
   box-sizing: border-box;
-  animation: animloader 0.3s 0.45s linear infinite alternate;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: animloader 2s linear infinite;
 }
-.loader_one::before {
-  left: -20px;
-  animation-delay: 0s;
+.loader_one::after {
+  animation-delay: 1s;
 }
 
 @keyframes animloader {
   0% {
-    height: 48px;
+    transform: scale(0);
+    opacity: 1;
   }
   100% {
-    height: 4px;
+    transform: scale(1);
+    opacity: 0;
   }
 }

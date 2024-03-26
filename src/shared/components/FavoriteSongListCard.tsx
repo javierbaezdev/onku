@@ -17,7 +17,9 @@ const FavoriteSongListCard = ({
 }: Props) => {
   return (
     <div
-      className={twMerge(clsx('flex max-w-[320] flex-row gap-2 ', className))}
+      className={twMerge(
+        clsx('flex max-w-[320] animate-fade-in flex-row gap-2', className),
+      )}
       {...rest}
     >
       <div className='min-w-[50px] '>

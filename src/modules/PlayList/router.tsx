@@ -1,16 +1,10 @@
 import { lazy } from 'react'
 import { PATHS } from './paths'
-import { FAKE_DELAY_ROUTER } from '@/shared/constants/general'
 
-const PlayList = lazy(async () => {
-  await new Promise((resolve) => setTimeout(resolve, FAKE_DELAY_ROUTER))
-  return import('./pages/PlayList')
-})
-
-const PlayListDetails = lazy(async () => {
-  await new Promise((resolve) => setTimeout(resolve, FAKE_DELAY_ROUTER))
-  return import('./pages/PlayListDetails')
-})
+const PlayList = lazy(async () => await import('./pages/PlayList'))
+const PlayListDetails = lazy(
+  async () => await import('./pages/PlayListDetails'),
+)
 
 const routes = [
   {

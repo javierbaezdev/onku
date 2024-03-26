@@ -1,7 +1,7 @@
 import { PATHS } from '@/modules/PlayList/paths'
 import { Favorite } from '@/modules/PlayList/types'
 import { Alert, FavoriteSongListCard } from '@/shared/components'
-import { FavoriteList } from '@/shared/components/loaders/skeletons'
+import { Min01 } from '@/shared/components/loaders'
 import { useGetAll } from '@/shared/hooks'
 import { Home, Library } from '@/shared/icons'
 import { useAppPersistStore } from '@/store'
@@ -41,9 +41,13 @@ const Aside = () => {
           </a>
         </div>
 
-        <div className='flex flex-row gap-2 rounded-t-md bg-cod-gray-950 p-6  pb-6 text-cod-gray-300'>
-          <Library />
-          <h3 className='text-md'>Tus favoritos</h3>
+        <div className='flex flex-row justify-between rounded-t-md bg-cod-gray-950 p-6  pb-6 text-cod-gray-300'>
+          <div className='flex flex-row gap-2'>
+            <Library />
+            <h3 className='text-md'>Tus favoritos</h3>
+          </div>
+
+          {isLoading && <Min01 />}
         </div>
       </div>
 
@@ -51,7 +55,7 @@ const Aside = () => {
         {isLoading && isError && (
           <Alert msg='¡Lista de favoritos no disponible!' />
         )}
-        {isLoading && <FavoriteList />}
+
         {favorites?.length === 0 && (
           <Alert msg='¡Lista de favoritos está vacía!' />
         )}
