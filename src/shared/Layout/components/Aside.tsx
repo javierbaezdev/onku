@@ -5,11 +5,8 @@ import { Min01 } from '@/shared/components/loaders'
 import { useGetAll } from '@/shared/hooks'
 import { Home, Library } from '@/shared/icons'
 import { useAppPersistStore } from '@/store'
-import { useLocation, useNavigate } from 'react-router-dom'
 
 const Aside = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
   const favoritesSongsIds = useAppPersistStore(
     (store) => store.favoritesSongsIds,
   )
@@ -27,8 +24,8 @@ const Aside = () => {
   })
 
   const goHome = () => {
-    if (location.pathname !== `/${PATHS.PLAY_LISTS}`) {
-      navigate('/play-lists')
+    if (window.location.pathname !== `/${PATHS.PLAY_LISTS}`) {
+      window.location.href = '/play-lists'
     }
   }
   return (

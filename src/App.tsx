@@ -6,13 +6,13 @@ import Layout from './shared/Layout'
 
 const App = () => {
   return (
-    <Suspense fallback={<FullScreen />}>
-      <Router>
-        <Layout>
+    <Layout>
+      <Suspense fallback={<FullScreen />}>
+        <Router>
           <RenderRoutes />
-        </Layout>
-      </Router>
-    </Suspense>
+        </Router>
+      </Suspense>
+    </Layout>
   )
 }
 
