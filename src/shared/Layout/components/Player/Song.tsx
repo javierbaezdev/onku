@@ -19,46 +19,44 @@ const Song = () => {
   }
 
   return (
-    <div className='flex flex-row items-center gap-2'>
-      <div className='flex min-w-[60%] max-w-[60%] flex-row gap-4 overflow-hidden'>
-        <img
-          className={twMerge(
-            clsx('aspect-square rounded-md', {
-              'border border-carissma-200/50 p-2': !currentMusic?.song?.cover,
-            }),
-          )}
-          width={60}
-          height={60}
-          loading='eager'
-          src={currentMusic?.song?.cover || MIN_LOGO}
-        />
-        <div className='flex flex-col gap-2'>
-          <Marquee className='text-sm' classNameContainer=''>
-            {currentMusic?.song?.name || ''}
-          </Marquee>
-          <span className='line-clamp-1 text-xs text-cod-gray-400'>
-            {currentMusic?.playList?.name || ''}
-          </span>
-        </div>
-      </div>
+    <>
       {currentMusic?.song && (
-        <div className=' mb-auto pt-2'>
-          <Heart
-            onClick={() => handleFavoriteSong(currentMusic?.song?.id || '')}
-            className={twMerge(
-              clsx(
-                'inline-block cursor-pointer text-cod-gray-400 hover:scale-110',
-                {
-                  'animate-tada text-carissma-600': favoritesSongsIds.includes(
-                    currentMusic?.song.id,
-                  ),
-                },
-              ),
-            )}
-          />
+        <div className='flex animate-zoom-in flex-row items-center gap-2'>
+          <div className='flex min-w-[55%] max-w-[55%] flex-row gap-4 overflow-hidden'>
+            <img
+              className='aspect-square rounded-md'
+              width={60}
+              height={60}
+              loading='eager'
+              src={currentMusic?.song?.cover || MIN_LOGO}
+            />
+            <div className='flex flex-col gap-2'>
+              <Marquee className='text-sm' classNameContainer=''>
+                {currentMusic?.song?.name || ''}
+              </Marquee>
+              <span className='line-clamp-1 text-xs text-cod-gray-400'>
+                {currentMusic?.playList?.name || ''}
+              </span>
+            </div>
+          </div>
+
+          <div className=' mb-auto pt-2'>
+            <Heart
+              onClick={() => handleFavoriteSong(currentMusic?.song?.id || '')}
+              className={twMerge(
+                clsx(
+                  'inline-block cursor-pointer text-cod-gray-400 hover:scale-110',
+                  {
+                    'animate-tada text-carissma-600':
+                      favoritesSongsIds.includes(currentMusic?.song.id),
+                  },
+                ),
+              )}
+            />
+          </div>
         </div>
       )}
-    </div>
+    </>
   )
 }
 

@@ -5,14 +5,11 @@ import { useGetAll } from '@/shared/hooks'
 import { PlayList } from '../types'
 import { Alert } from '@/shared/components'
 import { PlayListDetailsSkeleton } from '@/shared/components/loaders/skeletons'
-import { useEffect } from 'react'
 import { useAppStore } from '@/store'
 
 const PlayListDetails = () => {
   const { playListId } = useParams()
-  const { currentMusic, setCurrentMusic, playerBarControl } = useAppStore(
-    (store) => store,
-  )
+  const setCurrentMusic = useAppStore((store) => store.setCurrentMusic)
   const {
     data: playList,
     isError,
@@ -39,14 +36,6 @@ const PlayListDetails = () => {
     }
   }
 
-  useEffect(() => {
-    if (!playerBarControl.isPlaying) {
-      if (currentMusic?.playList?.id !== playList?.id) {
-        playListToStore()
-      }
-    }
-  }, [playList, currentMusic])
-
   return (
     <div className='flex h-full animate-fade-in flex-col gap-2 animate-delay-100'>
       {!isLoading && isError && (
@@ -67,6 +56,7 @@ const PlayListDetails = () => {
         <>
           <Header />
           <Hero
+            playListId={playList.id}
             cover={playList?.cover}
             playListName={playList?.name}
             playListToStore={playListToStore}

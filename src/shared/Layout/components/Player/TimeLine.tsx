@@ -1,6 +1,7 @@
 import { TimeFormat } from '@/shared/components'
 import { PauseButton, PlayButton } from '@/shared/components/buttons'
 import { Slider } from '@/shared/components/inputs'
+import { BackSeconds, NextSong, SkipSeconds } from '@/shared/icons'
 import { useAppStore } from '@/store'
 import { useEffect, useRef } from 'react'
 
@@ -53,7 +54,7 @@ const TimeLine = () => {
   }, [currentMusic?.song])
 
   useEffect(() => {
-    if (audioRef?.current && volumeControl?.value) {
+    if (audioRef?.current && volumeControl?.value !== undefined) {
       audioRef.current.volume = volumeControl?.value
     }
   }, [volumeControl?.value])
@@ -79,12 +80,16 @@ const TimeLine = () => {
   return (
     <div className='flex flex-col gap-3'>
       <audio ref={audioRef} />
-      <div className='flex items-center justify-center'>
+      <div className='flex items-center justify-center gap-6'>
+        <BackSeconds className='cursor-pointer' />
+        <NextSong transform='rotate(180)' className='cursor-pointer' />
         {!playerBarControl.isPlaying ? (
           <PlayButton onClick={() => setPlay()} />
         ) : (
           <PauseButton onClick={() => setPause()} />
         )}
+        <NextSong className='cursor-pointer' />
+        <SkipSeconds className='cursor-pointer' />
       </div>
       <div className='flex items-center gap-1'>
         <TimeFormat value={playerBarControl.currentTime} />

@@ -24,7 +24,7 @@ interface State extends BaseState {
   setCurrentMusic: (currentMusic: CurrentMusic) => void
   setPlay: () => void
   setPause: () => void
-  setVolume: (newVolume: number) => void
+  setVolume: (newVolume: number, setLastVolume?: boolean) => void
   setCurrentTime: (newCurrentTime: number) => void
   onNextSong: () => void
   onPreviewSong: () => void
@@ -97,10 +97,14 @@ export const useAppStore = create<State>((set, get) => ({
       playerBarControl: { ...playerBarControl, isPlaying: false },
     })
   },
-  setVolume: (newVolume) => {
+  setVolume: (newVolume, setLastVolume) => {
     const { volumeControl } = get()
     set({
-      volumeControl: { ...volumeControl, value: newVolume },
+      volumeControl: {
+        ...volumeControl,
+        value: newVolume,
+        lastVolume: setLastVolume ? volumeControl.value : undefined,
+      },
     })
   },
   setCurrentTime: (newCurrentTime) => {

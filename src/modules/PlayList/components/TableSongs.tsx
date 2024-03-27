@@ -5,13 +5,24 @@ import { useAppPersistStore, useAppStore } from '@/store'
 import { twMerge } from 'tailwind-merge'
 import { clsx } from 'clsx'
 import { DurationSong, SongCard } from '.'
+import { useState } from 'react'
 
 interface Props {
   songs?: Song[]
   playListToStore: (indexSong?: number) => void
 }
 
-const TableSongs = ({ songs }: Props) => {
+interface RenderPlayOrPause {
+  isPlay: boolean
+  indexSong?: number
+  usingSimplePlay?: boolean
+}
+
+const TableSongs = ({ songs, playListToStore }: Props) => {
+  const [isHover, setIsHover] = useState(false)
+  const [currentHoverIndex, setCurrentHoverIndex] = useState<number | null>(
+    null,
+  )
   const { favoritesSongsIds, addNewFavoriteId, deleteFavoriteId } =
     useAppPersistStore((store) => store)
 
@@ -31,12 +42,26 @@ const TableSongs = ({ songs }: Props) => {
     }
   }
 
-  const renderPlayPauseOrIndex = (songId: string, index: number) => {
-    if (currentMusic?.song?.id !== songId) {
-      return index + 1
-    }
+  const handlePlay = (indexSong?: number) => {
+    playListToStore(indexSong)
+    setPlay()
+  }
 
-    if (currentMusic?.song?.id === songId && playerBarControl.isPlaying) {
+  const renderPlayOrPause = ({
+    isPlay,
+    indexSong,
+    usingSimplePlay,
+  }: RenderPlayOrPause): JSX.Element => {
+    if (isPlay) {
+      return (
+        <Play
+          width={14}
+          height={14}
+          className='cursor-pointer text-carissma-600 hover:scale-110'
+          onClick={() => (!usingSimplePlay ? handlePlay(indexSong) : setPlay())}
+        />
+      )
+    } else {
       return (
         <Pause
           width={14}
@@ -46,15 +71,35 @@ const TableSongs = ({ songs }: Props) => {
         />
       )
     }
-    if (currentMusic?.song?.id === songId && !playerBarControl.isPlaying) {
+  }
+
+  const renderPlayPauseOrIndex = (songId: string, index: number) => {
+    if (currentMusic?.song?.id !== songId) {
       return (
-        <Play
-          width={14}
-          height={14}
-          className='cursor-pointer text-carissma-600 hover:scale-110'
-          onClick={() => setPlay()}
-        />
+        <div
+          onMouseEnter={() => {
+            setIsHover(true)
+            setCurrentHoverIndex(index)
+          }}
+          onMouseLeave={() => {
+            setIsHover(false)
+            setCurrentHoverIndex(null)
+          }}
+        >
+          {isHover && currentHoverIndex === index ? (
+            renderPlayOrPause({ isPlay: true, indexSong: index })
+          ) : (
+            <p>{index + 1}</p>
+          )}
+        </div>
       )
+    }
+
+    if (currentMusic?.song?.id === songId && playerBarControl.isPlaying) {
+      return renderPlayOrPause({ isPlay: false })
+    }
+    if (currentMusic?.song?.id === songId && !playerBarControl.isPlaying) {
+      return renderPlayOrPause({ isPlay: true, usingSimplePlay: true })
     }
   }
 
@@ -79,7 +124,7 @@ const TableSongs = ({ songs }: Props) => {
         <tbody>
           {songs?.map((song, index) => (
             <tr key={song.id}>
-              <td scope='row' className='px-6 py-6'>
+              <td scope='row' className='min-w-8 max-w-8 px-6 py-6'>
                 {renderPlayPauseOrIndex(song.id, index)}
               </td>
               <td className='max-w-44 pl-4'>
