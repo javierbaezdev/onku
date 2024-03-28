@@ -8,6 +8,7 @@ import { Slider } from '@/shared/components/inputs'
 import { BackSeconds, NextSong, SkipSeconds } from '@/shared/icons'
 import { useAppStore } from '@/store'
 import { useEffect, useRef } from 'react'
+import FullPlayer from './FullPlayer'
 
 const TimeLine = () => {
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -21,6 +22,7 @@ const TimeLine = () => {
     setCurrentTime,
     onNextSong,
     onPreviewSong,
+    isFullScreen,
   } = useAppStore((store) => store)
 
   const onChangeProgressSong = (values: number[]) => {
@@ -148,6 +150,7 @@ const TimeLine = () => {
         />
         <TimeFormat value={audioRef.current?.duration || 0} />
       </div>
+      {isFullScreen && <FullPlayer />}
     </div>
   )
 }

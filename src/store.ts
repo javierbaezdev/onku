@@ -28,6 +28,7 @@ interface State extends BaseState {
   setCurrentTime: (newCurrentTime: number) => void
   onNextSong: () => void
   onPreviewSong: () => void
+  setFullScreen: (isFull: boolean) => void
 }
 
 const initialValues: BaseState = {
@@ -162,6 +163,11 @@ export const useAppStore = create<State>((set, get) => ({
         })
       }
     }
+  },
+  setFullScreen: (isFull) => {
+    set({
+      isFullScreen: isFull,
+    })
   },
 }))
 

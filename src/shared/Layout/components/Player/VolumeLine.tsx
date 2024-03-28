@@ -1,6 +1,7 @@
+import { BasicButton } from '@/shared/components/buttons'
 import { Slider } from '@/shared/components/inputs'
 import {
-  FullScreen,
+  FullScreen as FullScreenIcon,
   VolumeFull,
   VolumeMedium,
   VolumeMin,
@@ -10,7 +11,9 @@ import { useAppStore } from '@/store'
 import { useMemo } from 'react'
 
 const VolumeLine = () => {
-  const { volumeControl, setVolume } = useAppStore((store) => store)
+  const { volumeControl, setVolume, setFullScreen } = useAppStore(
+    (store) => store,
+  )
 
   const onChangeVolume = (values: number[], isMute?: boolean) => {
     const [newVolume] = values
@@ -78,7 +81,9 @@ const VolumeLine = () => {
         min={volumeControl.min}
         onValueChange={(values) => onChangeVolume(values)}
       />
-      <FullScreen className='cursor-pointer' />
+      <BasicButton onClick={() => setFullScreen(true)}>
+        <FullScreenIcon className='cursor-pointer' />
+      </BasicButton>
     </div>
   )
 }

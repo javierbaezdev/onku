@@ -1,3 +1,4 @@
+import { extractColor } from '../utils'
 import Aside from './components/Aside'
 import Player from './components/Player'
 

@@ -1,4 +1,4 @@
-import formatTime from '@/shared/utils/formatTime'
+import { formatTime } from '@/shared/utils'
 import { useRef } from 'react'
 
 interface Props {
