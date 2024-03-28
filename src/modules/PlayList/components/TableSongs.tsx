@@ -76,16 +76,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
   const renderPlayPauseOrIndex = (songId: string, index: number) => {
     if (currentMusic?.song?.id !== songId) {
       return (
-        <div
-          onMouseEnter={() => {
-            setIsHover(true)
-            setCurrentHoverIndex(index)
-          }}
-          onMouseLeave={() => {
-            setIsHover(false)
-            setCurrentHoverIndex(null)
-          }}
-        >
+        <div>
           {isHover && currentHoverIndex === index ? (
             renderPlayOrPause({ isPlay: true, indexSong: index })
           ) : (
@@ -124,7 +115,18 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
         <tbody>
           {songs?.map((song, index) => (
             <tr key={song.id}>
-              <td scope='row' className='min-w-8 max-w-8 px-6 py-6'>
+              <td
+                scope='row'
+                className='min-w-8 max-w-8 px-6 py-6'
+                onMouseEnter={() => {
+                  setIsHover(true)
+                  setCurrentHoverIndex(index)
+                }}
+                onMouseLeave={() => {
+                  setIsHover(false)
+                  setCurrentHoverIndex(null)
+                }}
+              >
                 {renderPlayPauseOrIndex(song.id, index)}
               </td>
               <td className='max-w-44 pl-4'>

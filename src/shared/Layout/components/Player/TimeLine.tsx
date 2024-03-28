@@ -1,5 +1,9 @@
 import { TimeFormat } from '@/shared/components'
-import { PauseButton, PlayButton } from '@/shared/components/buttons'
+import {
+  BasicButton,
+  PauseButton,
+  PlayButton,
+} from '@/shared/components/buttons'
 import { Slider } from '@/shared/components/inputs'
 import { BackSeconds, NextSong, SkipSeconds } from '@/shared/icons'
 import { useAppStore } from '@/store'
@@ -16,6 +20,7 @@ const TimeLine = () => {
     volumeControl,
     setCurrentTime,
     onNextSong,
+    onPreviewSong,
   } = useAppStore((store) => store)
 
   const onChangeProgressSong = (values: number[]) => {
@@ -28,6 +33,18 @@ const TimeLine = () => {
   const handleTimeUpdate = () => {
     if (audioRef.current) {
       setCurrentTime(audioRef.current.currentTime)
+    }
+  }
+
+  const skipCurrentTime = () => {
+    if (audioRef.current && playerBarControl.currentTime) {
+      audioRef.current.currentTime = playerBarControl.currentTime + 15
+    }
+  }
+  const backCurrentTime = () => {
+    if (audioRef.current && playerBarControl.currentTime) {
+      const newTime = playerBarControl.currentTime - 15
+      audioRef.current.currentTime = newTime <= 0 ? 0 : newTime
     }
   }
 
@@ -81,15 +98,44 @@ const TimeLine = () => {
     <div className='flex flex-col gap-3'>
       <audio ref={audioRef} />
       <div className='flex items-center justify-center gap-6'>
-        <BackSeconds className='cursor-pointer' />
-        <NextSong transform='rotate(180)' className='cursor-pointer' />
+        <BasicButton
+          onClick={() => backCurrentTime()}
+          isDisabled={Boolean(
+            !audioRef.current || !playerBarControl.currentTime,
+          )}
+        >
+          <BackSeconds />
+        </BasicButton>
+        <BasicButton
+          isDisabled={Boolean(
+            currentMusic?.songs?.at(0)?.id === currentMusic?.song?.id,
+          )}
+          onClick={() => onPreviewSong()}
+        >
+          <NextSong transform='rotate(180)' />
+        </BasicButton>
+
         {!playerBarControl.isPlaying ? (
           <PlayButton onClick={() => setPlay()} />
         ) : (
           <PauseButton onClick={() => setPause()} />
         )}
-        <NextSong className='cursor-pointer' />
-        <SkipSeconds className='cursor-pointer' />
+        <BasicButton
+          isDisabled={Boolean(
+            currentMusic?.songs?.at(-1)?.id === currentMusic?.song?.id,
+          )}
+          onClick={() => onNextSong()}
+        >
+          <NextSong />
+        </BasicButton>
+        <BasicButton
+          onClick={skipCurrentTime}
+          isDisabled={Boolean(
+            !audioRef.current || !playerBarControl.currentTime,
+          )}
+        >
+          <SkipSeconds />
+        </BasicButton>
       </div>
       <div className='flex items-center gap-1'>
         <TimeFormat value={playerBarControl.currentTime} />
