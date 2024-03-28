@@ -11,7 +11,8 @@ const App = () => {
   useEffect(() => {
     if (isFullScreen) {
       document.documentElement.requestFullscreen()
-    } else if (document.exitFullscreen) {
+    }
+    if (document.exitFullscreen && !isFullScreen) {
       document.exitFullscreen()
     }
   }, [isFullScreen])

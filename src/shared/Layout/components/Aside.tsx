@@ -70,6 +70,7 @@ const Aside = () => {
         )}
         {favorites?.map(({ cover, name, playList, id }) => (
           <FavoriteSongListCard
+            key={id}
             id={id}
             cover={cover}
             name={name}
