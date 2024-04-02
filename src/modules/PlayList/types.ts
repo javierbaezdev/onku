@@ -9,6 +9,7 @@ export interface PlayList {
   id: string
   name: string
   cover: string
+  fullCover: string
   songs: Song[]
 }
 

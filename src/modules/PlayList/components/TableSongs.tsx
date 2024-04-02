@@ -26,9 +26,13 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
   const { favoritesSongsIds, addNewFavoriteId, deleteFavoriteId } =
     useAppPersistStore((store) => store)
 
-  const { currentMusic, playerBarControl, setPause, setPlay } = useAppStore(
-    (store) => store,
-  )
+  const {
+    currentMusic,
+    playerBarControl,
+    setPause,
+    setPlay,
+    deleteFavoriteSong,
+  } = useAppStore((store) => store)
 
   if (!songs) {
     return <Alert msg='¡La listas de reproducción esta vacía!' />
@@ -37,6 +41,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
   const handleFavoriteSong = (songId: string) => {
     if (favoritesSongsIds.includes(songId)) {
       deleteFavoriteId(songId)
+      deleteFavoriteSong(songId)
     } else {
       addNewFavoriteId(songId)
     }

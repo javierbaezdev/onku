@@ -9,7 +9,7 @@ import { useAppStore } from '@/store'
 
 interface Props extends PlayList {}
 
-const PlayListCard = ({ cover, name, id, songs }: Props) => {
+const PlayListCard = ({ cover, name, id, songs, fullCover }: Props) => {
   const [isHover, setIsHover] = useState(false)
   const [isHoverPlayButton, setIsHoverPlayButton] = useState(false)
   const navigate = useNavigate()
@@ -30,7 +30,7 @@ const PlayListCard = ({ cover, name, id, songs }: Props) => {
   const handlePlay = () => {
     if (currentMusic?.playList?.id !== id) {
       setCurrentMusic({
-        playList: { cover, name, id, songs },
+        playList: { cover, name, id, songs, fullCover },
         songs: songs,
         song: songs[0],
       })

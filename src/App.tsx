@@ -12,7 +12,7 @@ const App = () => {
     if (isFullScreen) {
       document.documentElement.requestFullscreen()
     }
-    if (document.exitFullscreen && !isFullScreen) {
+    if (document.exitFullscreen) {
       document.exitFullscreen()
     }
   }, [isFullScreen])

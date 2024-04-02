@@ -1,12 +1,19 @@
+import { twMerge } from 'tailwind-merge'
 import { formatTime } from '../utils'
+import { clsx } from 'clsx'
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLSpanElement> {
   value: number
 }
 
-const TimeFormat = ({ value }: Props) => {
+const TimeFormat = ({ value, className, ...rest }: Props) => {
   return (
-    <span className='text-[10px] font-light text-cod-gray-300'>
+    <span
+      className={twMerge(
+        clsx('min-w-8 text-[10px] font-light text-cod-gray-300', className),
+      )}
+      {...rest}
+    >
       {formatTime(value)}
     </span>
   )

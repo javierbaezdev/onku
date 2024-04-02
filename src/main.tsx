@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
-      <ReactQueryDevtools position='top-right' />
+      <ReactQueryDevtools position='bottom-left' />
     </QueryClientProvider>
   </React.StrictMode>,
 )

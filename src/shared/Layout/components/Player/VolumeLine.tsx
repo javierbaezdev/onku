@@ -82,7 +82,7 @@ const VolumeLine = () => {
         onValueChange={(values) => onChangeVolume(values)}
       />
       <BasicButton onClick={() => setFullScreen(true)}>
-        <FullScreenIcon className='cursor-pointer' />
+        <FullScreenIcon />
       </BasicButton>
     </div>
   )

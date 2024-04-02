@@ -148,9 +148,12 @@ const TimeLine = () => {
           min={playerBarControl.min}
           onValueChange={(values) => onChangeProgressSong(values)}
         />
-        <TimeFormat value={audioRef.current?.duration || 0} />
+        <TimeFormat
+          value={audioRef.current?.duration || 0}
+          className='text-end'
+        />
       </div>
-      {isFullScreen && <FullPlayer />}
+      {isFullScreen && <FullPlayer audioRef={audioRef} />}
     </div>
   )
 }

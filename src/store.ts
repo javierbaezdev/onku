@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { devtools, persist } from 'zustand/middleware'
 import { PlayerBar, Volume } from './types/player'
 import { Favorite, PlayList, Song } from './modules/PlayList/types'
+import { FAVORITE_PLAY_LIST } from './shared/constants/general'
 
 type CurrentMusic = {
   playList?: PlayList
@@ -29,6 +30,7 @@ interface State extends BaseState {
   onNextSong: () => void
   onPreviewSong: () => void
   setFullScreen: (isFull: boolean) => void
+  deleteFavoriteSong: (songId: string) => void
 }
 
 const initialValues: BaseState = {
@@ -168,6 +170,16 @@ export const useAppStore = create<State>((set, get) => ({
     set({
       isFullScreen: isFull,
     })
+  },
+  deleteFavoriteSong: (songId: string) => {
+    const { currentMusic } = get()
+
+    if (currentMusic.playList?.id === FAVORITE_PLAY_LIST.id) {
+      const newSongs = currentMusic.songs?.filter((song) => song.id !== songId)
+      set({
+        currentMusic: { ...currentMusic, songs: newSongs },
+      })
+    }
   },
 }))
 

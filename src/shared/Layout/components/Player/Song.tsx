@@ -6,13 +6,14 @@ import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
 const Song = () => {
-  const currentMusic = useAppStore((store) => store.currentMusic)
+  const { currentMusic, deleteFavoriteSong } = useAppStore((store) => store)
   const { favoritesSongsIds, addNewFavoriteId, deleteFavoriteId } =
     useAppPersistStore((store) => store)
 
   const handleFavoriteSong = (songId: string) => {
     if (favoritesSongsIds.includes(songId)) {
       deleteFavoriteId(songId)
+      deleteFavoriteSong(songId)
     } else {
       addNewFavoriteId(songId)
     }

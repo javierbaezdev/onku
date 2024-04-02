@@ -22,7 +22,7 @@ const Slider = forwardRef<
       <Track className='bg-primary/20 relative h-1 w-full grow overflow-hidden rounded-full'>
         <Range
           className={twMerge(
-            clsx('absolute h-full bg-cod-gray-100', {
+            clsx('absolute h-full cursor-pointer bg-cod-gray-100', {
               'bg-carissma-500': isHover,
             }),
           )}
@@ -31,7 +31,7 @@ const Slider = forwardRef<
       <Thumb
         className={twMerge(
           clsx(
-            'bg-background focus-visible:ring-ring block h-3 w-3 rounded-full shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50',
+            'bg-background focus-visible:ring-ring block h-3 w-3 cursor-pointer rounded-full shadow transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50',
             { 'bg-cod-gray-100': isHover },
           ),
         )}
