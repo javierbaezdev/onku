@@ -19,7 +19,7 @@ const Slider = forwardRef<
       )}
       {...props}
     >
-      <Track className='bg-primary/20 relative h-1 w-full grow overflow-hidden rounded-full'>
+      <Track className='bg-primary/20 relative h-1 w-full grow cursor-pointer overflow-hidden rounded-full'>
         <Range
           className={twMerge(
             clsx('absolute h-full cursor-pointer bg-cod-gray-100', {

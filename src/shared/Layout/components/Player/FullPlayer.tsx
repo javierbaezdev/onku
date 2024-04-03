@@ -1,4 +1,4 @@
-import { Image, TimeFormat } from '@/shared/components'
+import { Image, Marquee, TimeFormat } from '@/shared/components'
 import {
   BasicButton,
   PauseButton,
@@ -112,7 +112,7 @@ const FullPlayer = ({ audioRef }: Props) => {
     <div className='fixed inset-0 z-[9000] flex h-screen w-screen animate-pulse-fade-in flex-col gap-2 bg-cod-gray-400 bg-gradient-to-b from-cod-gray-950/50 to-cod-gray-950'>
       {currentMusic.playList?.fullCover && (
         <Image
-          className='pointer-events-none absolute -z-10 h-full w-full animate-tada !opacity-20'
+          className='pointer-events-none absolute -z-10 h-full w-full animate-tada !opacity-20 animate-delay-1000'
           src={currentMusic.playList?.fullCover}
           width='100%'
           height='100%'
@@ -124,43 +124,54 @@ const FullPlayer = ({ audioRef }: Props) => {
       >
         <FullScreenIcon />
       </BasicButton>
-      <div className='flex h-full gap-6 rounded-md p-2 px-28'>
-        <div className='flex h-full items-center'>
-          <div className='relative'>
-            <Image
-              className='aspect-square animate-slide-in-top rounded-md animate-delay-300'
-              width='200px'
-              height='200px'
-              src={currentMusic?.playList?.cover}
-            />
-            {playerBarControl.isPlaying && (
-              <div className='absolute -top-24 left-0.5 -z-10 animate-rotate-360 animate-duration-1000 animate-iteration-count-infinite'>
-                <DiskOnku
-                  className='animate-zoom-in text-carissma-600'
-                  width={170}
-                  height={170}
-                />
-              </div>
-            )}
+      <div className='flex h-full w-full flex-col justify-center gap-2 px-28'>
+        <div className='flex gap-6'>
+          <div className='flex h-full items-center'>
+            <div className='relative'>
+              <Image
+                className='aspect-square animate-slide-in-top rounded-md animate-delay-300'
+                width='200px'
+                height='200px'
+                src={currentMusic?.playList?.cover}
+              />
+              {playerBarControl.isPlaying && (
+                <div className='absolute -top-24 left-0.5 -z-10 animate-rotate-360 animate-duration-1000 animate-iteration-count-infinite'>
+                  <DiskOnku
+                    className='animate-zoom-in text-carissma-600'
+                    width={170}
+                    height={170}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+          <div className=' flex h-full w-full items-center'>
+            <ul className='content-pages  max-h-[170px] w-full overflow-y-auto'>
+              {currentMusic?.songs?.map((song, index) => (
+                <li
+                  key={song.id}
+                  className={twMerge(
+                    clsx('', {
+                      'text-carissma-600': song.id === currentMusic.song?.id,
+                    }),
+                  )}
+                >
+                  <span className='drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>{`${index + 1} - ${song.name}`}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
-        <div className='content-pages flex h-full w-full items-center overflow-y-auto'>
-          <ul>
-            {currentMusic?.songs?.map((song, index) => (
-              <li
-                key={song.id}
-                className={twMerge(
-                  clsx('', {
-                    'text-carissma-600': song.id === currentMusic.song?.id,
-                  }),
-                )}
-              >
-                <span className='drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'>{`${index + 1} - ${song.name}`}</span>
-              </li>
-            ))}
-          </ul>
+        <div>
+          <Marquee
+            className='text-4xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]'
+            classNameContainer='min-h-20 max-h-20'
+          >
+            {currentMusic.playList?.name || ''}
+          </Marquee>
         </div>
       </div>
+
       {/* player */}
       <div className='flex flex-col items-center justify-center gap-2 px-28 pb-28'>
         <div className='flex w-full items-center gap-1'>

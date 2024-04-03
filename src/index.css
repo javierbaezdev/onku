@@ -17,7 +17,7 @@ html {
 .content-pages {
   --sb-track-color: #454545;
   --sb-thumb-color: #888888;
-  --sb-size: 8px;
+  --sb-size: 6px;
 }
 
 .content-pages::-webkit-scrollbar {

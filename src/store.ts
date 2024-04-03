@@ -16,6 +16,7 @@ type CurrentMusic = {
 
 interface BaseState {
   isFullScreen: boolean
+  currentRoute?: string
   volumeControl: Volume
   playerBarControl: PlayerBar
   currentMusic: CurrentMusic
@@ -30,11 +31,13 @@ interface State extends BaseState {
   onNextSong: () => void
   onPreviewSong: () => void
   setFullScreen: (isFull: boolean) => void
+  setCurrentRoute: (route: string | undefined) => void
   deleteFavoriteSong: (songId: string) => void
 }
 
 const initialValues: BaseState = {
   isFullScreen: false,
+  currentRoute: undefined,
   volumeControl: {
     initialValue: 0.25,
     max: 100,
@@ -180,6 +183,11 @@ export const useAppStore = create<State>((set, get) => ({
         currentMusic: { ...currentMusic, songs: newSongs },
       })
     }
+  },
+  setCurrentRoute: (route) => {
+    set({
+      currentRoute: route,
+    })
   },
 }))
 

@@ -1,13 +1,14 @@
 import { useParams } from 'react-router-dom'
 import { Header, Hero, TableSongs } from '../components'
 import { PATHS } from '../paths'
-import { useGetAll } from '@/shared/hooks'
+import { useGetAll, useRedirect } from '@/shared/hooks'
 import { PlayList } from '../types'
 import { Alert } from '@/shared/components'
 import { PlayListDetailsSkeleton } from '@/shared/components/loaders/skeletons'
 import { useAppStore } from '@/store'
 
 const PlayListDetails = () => {
+  useRedirect() /* I don't like but... well.... */
   const { playListId } = useParams()
   const setCurrentMusic = useAppStore((store) => store.setCurrentMusic)
   const {

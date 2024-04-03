@@ -11,9 +11,8 @@ const Aside = () => {
   const favoritesSongsIds = useAppPersistStore(
     (store) => store.favoritesSongsIds,
   )
-  const { currentMusic, playerBarControl, setCurrentMusic } = useAppStore(
-    (store) => store,
-  )
+  const { currentMusic, playerBarControl, setCurrentMusic, setCurrentRoute } =
+    useAppStore((store) => store)
 
   const {
     data: favorites,
@@ -36,8 +35,12 @@ const Aside = () => {
   }, [favorites])
 
   const goHome = () => {
-    if (window.location.pathname !== `/${PATHS.PLAY_LISTS}`) {
-      window.location.href = '/play-lists'
+    if (window.location.pathname !== `/${PATHS.PLAY_LISTS.CLI}`) {
+      setCurrentRoute(`/${PATHS.PLAY_LISTS.CLI}`)
+
+      setTimeout(() => {
+        setCurrentRoute(undefined)
+      }, 1000)
     }
   }
   return (
