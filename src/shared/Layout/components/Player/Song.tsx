@@ -1,4 +1,4 @@
-import { Marquee } from '@/shared/components'
+import { Image, Marquee } from '@/shared/components'
 import { MIN_LOGO } from '@/shared/constants/general'
 import { Heart } from '@/shared/icons'
 import { useAppPersistStore, useAppStore } from '@/store'
@@ -24,11 +24,10 @@ const Song = () => {
       {currentMusic?.song && (
         <div className='flex animate-zoom-in flex-row items-center gap-2'>
           <div className='flex min-w-[55%] max-w-[55%] flex-row gap-4 overflow-hidden'>
-            <img
+            <Image
               className='aspect-square rounded-md'
-              width={60}
-              height={60}
-              loading='eager'
+              width='60px'
+              height='60px'
               src={currentMusic?.song?.cover || MIN_LOGO}
             />
             <div className='flex flex-col gap-2'>

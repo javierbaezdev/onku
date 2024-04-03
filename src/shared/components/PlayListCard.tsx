@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATHS } from '@/modules/PlayList/paths'
 import { useAppStore } from '@/store'
+import { Image } from '.'
 
 interface Props extends PlayList {}
 
@@ -46,12 +47,11 @@ const PlayListCard = ({ cover, name, id, songs, fullCover }: Props) => {
       className='flex w-40 cursor-pointer flex-col items-center justify-center gap-2 rounded-md p-2 text-start hover:bg-cod-gray-600/30'
     >
       <div className='relative'>
-        <img
-          className=' aspect-square rounded-md'
-          width={150}
-          height={150}
+        <Image
+          className='aspect-square rounded-md'
+          width='150px'
+          height='150px'
           src={cover}
-          loading='eager'
         />
         {!isPlayingCurrentPlayList ? (
           <PlayButton

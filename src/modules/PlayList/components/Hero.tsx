@@ -1,4 +1,4 @@
-import { Marquee } from '@/shared/components'
+import { Image, Marquee } from '@/shared/components'
 import { PauseButton, PlayButton } from '@/shared/components/buttons'
 import { useAppStore } from '@/store'
 import { clsx } from 'clsx'
@@ -38,12 +38,11 @@ const Hero = ({ playListId, cover, playListName, playListToStore }: Props) => {
         onMouseLeave={() => setIsHover(false)}
       >
         {cover && (
-          <img
+          <Image
             className='aspect-square rounded-md'
-            width={200}
-            height={200}
+            width='200px'
+            height='200px'
             src={cover}
-            loading='eager'
           />
         )}
         {!isPlayingCurrentPlayList ? (

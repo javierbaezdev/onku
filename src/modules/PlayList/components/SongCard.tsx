@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 import { clsx } from 'clsx'
-import { Marquee } from '@/shared/components'
+import { Image, Marquee } from '@/shared/components'
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   cover: string
@@ -25,12 +25,11 @@ const SongCard = ({
       {...rest}
     >
       <div className='min-w-[50px] '>
-        <img
+        <Image
           className=' aspect-square rounded-md'
-          width={50}
-          height={50}
+          width='50px'
+          height='50px'
           src={cover}
-          loading='eager'
         />
       </div>
       <div className='flex flex-col gap-2 overflow-hidden'>

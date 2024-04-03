@@ -111,14 +111,11 @@ const FullPlayer = ({ audioRef }: Props) => {
   return (
     <div className='fixed inset-0 z-[9000] flex h-screen w-screen animate-pulse-fade-in flex-col gap-2 bg-cod-gray-400 bg-gradient-to-b from-cod-gray-950/50 to-cod-gray-950'>
       {currentMusic.playList?.fullCover && (
-        <div
+        <Image
           className='pointer-events-none absolute -z-10 h-full w-full animate-tada !opacity-20'
-          style={{
-            backgroundImage: `url(${currentMusic.playList?.fullCover})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-          }}
+          src={currentMusic.playList?.fullCover}
+          width='100%'
+          height='100%'
         />
       )}
       <BasicButton
@@ -132,8 +129,8 @@ const FullPlayer = ({ audioRef }: Props) => {
           <div className='relative'>
             <Image
               className='aspect-square animate-slide-in-top rounded-md animate-delay-300'
-              width={200}
-              height={200}
+              width='200px'
+              height='200px'
               src={currentMusic?.playList?.cover}
             />
             {playerBarControl.isPlaying && (
