@@ -104,13 +104,16 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
       <table className='w-full text-left text-sm rtl:text-right'>
         <thead className='text-xs uppercase '>
           <tr>
-            <th scope='col' className='px-6 py-3 text-sm font-bold md:w-3'>
+            <th
+              scope='col'
+              className='hidden px-6 py-3 text-sm font-bold md:block md:w-3'
+            >
               #
             </th>
             <th scope='col' className='px-6 py-3'>
               Título
             </th>
-            <th scope='col' className='px-6 py-3'>
+            <th scope='col' className='hidden px-6 py-3 md:block'>
               Duración
             </th>
             <th scope='col' className='px-6 py-3'></th>
@@ -122,7 +125,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
             <tr key={song.id}>
               <td
                 scope='row'
-                className='min-w-8 max-w-8 px-6 py-6'
+                className='hidden min-w-8 max-w-8 px-6 py-6 md:block'
                 onMouseEnter={() => {
                   setIsHover(true)
                   setCurrentHoverIndex(index)
@@ -147,7 +150,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
                   }
                 />
               </td>
-              <td className='px-6 py-6'>
+              <td className='hidden px-6 py-6 md:block'>
                 <DurationSong urlSong={song.url} />
               </td>
               <td className='px-6 py-6'>

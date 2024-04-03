@@ -20,13 +20,13 @@ const Player = () => {
         }),
       )}
     >
-      <div className='md:w-2/6'>
+      <div className='w-[25%] md:w-2/6'>
         <Song />
       </div>
-      <div className='md:w-2/6'>
+      <div className='w-full md:w-2/6'>
         <TimeLine />
       </div>
-      <div className='  md:w-2/6'>
+      <div className='hidden md:block md:w-2/6'>
         <VolumeLine />
       </div>
     </div>

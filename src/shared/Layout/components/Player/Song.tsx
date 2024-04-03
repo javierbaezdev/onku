@@ -23,14 +23,14 @@ const Song = () => {
     <>
       {currentMusic?.song && (
         <div className='flex animate-zoom-in flex-row items-center gap-2'>
-          <div className='flex min-w-[55%] max-w-[55%] flex-row gap-4 overflow-hidden'>
+          <div className='ms:min-w-full flex flex-row gap-4 overflow-hidden sm:max-w-full md:min-w-[55%] md:max-w-[55%]'>
             <Image
               className='aspect-square rounded-md'
               width='60px'
               height='60px'
               src={currentMusic?.song?.cover || MIN_LOGO}
             />
-            <div className='flex flex-col gap-2'>
+            <div className=' hidden flex-col gap-2 md:flex'>
               <Marquee className='text-sm' classNameContainer=''>
                 {currentMusic?.song?.name || ''}
               </Marquee>
@@ -40,7 +40,7 @@ const Song = () => {
             </div>
           </div>
 
-          <div className=' mb-auto pt-2'>
+          <div className=' mb-auto hidden pt-2 md:block'>
             <Heart
               onClick={() => handleFavoriteSong(currentMusic?.song?.id || '')}
               className={twMerge(

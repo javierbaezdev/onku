@@ -26,7 +26,6 @@ const VolumeLine = () => {
       if (volumeControl.value === 0)
         return (
           <VolumeMute
-            className='cursor-pointer'
             onClick={() =>
               onChangeVolume([
                 volumeControl.lastVolume !== undefined
@@ -37,38 +36,18 @@ const VolumeLine = () => {
           />
         )
       if (volumeControl.value > 0.0 && volumeControl.value <= 0.25)
-        return (
-          <VolumeMin
-            className='cursor-pointer'
-            onClick={() => onChangeVolume([0], true)}
-          />
-        )
+        return <VolumeMin onClick={() => onChangeVolume([0], true)} />
       if (volumeControl.value > 0.25 && volumeControl.value < 0.55)
-        return (
-          <VolumeMedium
-            className='cursor-pointer'
-            onClick={() => onChangeVolume([0], true)}
-          />
-        )
+        return <VolumeMedium onClick={() => onChangeVolume([0], true)} />
       if (volumeControl.value >= 0.55)
-        return (
-          <VolumeFull
-            className='cursor-pointer'
-            onClick={() => onChangeVolume([0], true)}
-          />
-        )
+        return <VolumeFull onClick={() => onChangeVolume([0], true)} />
     }
-    return (
-      <VolumeMin
-        className='cursor-pointer'
-        onClick={() => onChangeVolume([0], true)}
-      />
-    )
+    return <VolumeMin onClick={() => onChangeVolume([0], true)} />
   }, [volumeControl])
 
   return (
     <div className=' ml-auto flex w-36 items-center gap-1'>
-      {volumeIcon}
+      <BasicButton className='cursor-pointer'>{volumeIcon}</BasicButton>
 
       <Slider
         defaultValue={[volumeControl.initialValue * 100]}

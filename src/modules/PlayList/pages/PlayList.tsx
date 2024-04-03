@@ -33,7 +33,7 @@ const PlayListComponent = () => {
       )}
       {isLoading && <PlayListSkeleton />}
       {!isError && !isLoading && playLists && (
-        <div className='flex flex-row flex-wrap gap-2'>
+        <div className='flex flex-row flex-wrap justify-center gap-2 md:justify-start'>
           {playLists?.map((item) => <PlayListCard key={item.id} {...item} />)}
         </div>
       )}

@@ -139,9 +139,14 @@ const TimeLine = () => {
           <SkipSeconds />
         </BasicButton>
       </div>
-      <div className='flex items-center gap-1'>
-        <TimeFormat value={playerBarControl.currentTime} />
+      <div className='flex items-center justify-center md:gap-1'>
+        <TimeFormat
+          value={playerBarControl.currentTime}
+          className='hidden md:block'
+        />
+
         <Slider
+          className='hidden md:block'
           defaultValue={[playerBarControl.initialValue]}
           value={[playerBarControl.currentTime]}
           max={audioRef.current?.duration || playerBarControl.max}
@@ -150,7 +155,7 @@ const TimeLine = () => {
         />
         <TimeFormat
           value={audioRef.current?.duration || 0}
-          className='text-end'
+          className='hidden text-end md:block'
         />
       </div>
       {isFullScreen && <FullPlayer audioRef={audioRef} />}
