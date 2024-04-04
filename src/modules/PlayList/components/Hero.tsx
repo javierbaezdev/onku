@@ -48,11 +48,11 @@ const Hero = ({ playListId, cover, playListName, playListToStore }: Props) => {
         {!isPlayingCurrentPlayList ? (
           <PlayButton
             className={twMerge(
-              clsx('absolute bottom-2 right-2 hidden bg-carissma-600', {
+              clsx('absolute bottom-2 right-2 hidden !bg-carissma-600', {
                 'flex scale-105 transition': isHover,
               }),
             )}
-            iconClassName='text-cod-gray-100'
+            iconClassName='!text-cod-gray-100'
             onClick={handlePlay}
           />
         ) : (
@@ -73,7 +73,10 @@ const Hero = ({ playListId, cover, playListName, playListToStore }: Props) => {
             Lista de reproducción
           </h4>
 
-          <Marquee className='text-6xl' classNameContainer='min-h-20 max-h-20'>
+          <Marquee
+            className='text-xl md:text-6xl'
+            classNameContainer='md:min-h-20 md:max-h-20 min-h-10 max-h-10'
+          >
             {playListName}
           </Marquee>
         </div>

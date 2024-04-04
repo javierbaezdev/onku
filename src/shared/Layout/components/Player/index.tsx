@@ -20,10 +20,10 @@ const Player = () => {
         }),
       )}
     >
-      <div className='w-[25%] md:w-2/6'>
+      <div className='w-5/6 md:w-2/6'>
         <Song />
       </div>
-      <div className='w-full md:w-2/6'>
+      <div className='md:w-2/6'>
         <TimeLine />
       </div>
       <div className='hidden md:block md:w-2/6'>

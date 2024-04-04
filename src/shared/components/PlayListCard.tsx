@@ -56,11 +56,11 @@ const PlayListCard = ({ cover, name, id, songs, fullCover }: Props) => {
         {!isPlayingCurrentPlayList ? (
           <PlayButton
             className={twMerge(
-              clsx('absolute bottom-2 right-2 hidden bg-carissma-600', {
+              clsx('absolute bottom-2 right-2 hidden !bg-carissma-600', {
                 'flex scale-105 transition': isHover,
               }),
             )}
-            iconClassName='text-cod-gray-100'
+            iconClassName='!text-cod-gray-100'
             onMouseEnter={() => setIsHoverPlayButton(true)}
             onMouseLeave={() => setIsHoverPlayButton(false)}
             onClick={handlePlay}
@@ -68,11 +68,11 @@ const PlayListCard = ({ cover, name, id, songs, fullCover }: Props) => {
         ) : (
           <PauseButton
             className={twMerge(
-              clsx('r absolute bottom-2 right-2 hidden bg-carissma-600', {
+              clsx('r absolute bottom-2 right-2 hidden !bg-carissma-600', {
                 'flex scale-105 transition': isHover,
               }),
             )}
-            iconClassName='text-cod-gray-100'
+            iconClassName='!text-cod-gray-100'
             onMouseEnter={() => setIsHoverPlayButton(true)}
             onMouseLeave={() => setIsHoverPlayButton(false)}
             onClick={() => setPause()}

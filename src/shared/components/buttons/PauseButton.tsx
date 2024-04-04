@@ -10,14 +10,11 @@ const PauseButton = ({ className, iconClassName, ...rest }: Props) => {
   return (
     <button
       className={twMerge(
-        clsx(
-          'flex size-9 items-center justify-center rounded-full bg-cod-gray-200',
-          className,
-        ),
+        clsx('flex size-9 items-center justify-center rounded-full', className),
       )}
       {...rest}
     >
-      <Pause className={twMerge(clsx('text-cod-gray-950', iconClassName))} />
+      <Pause className={twMerge(clsx('', iconClassName))} />
     </button>
   )
 }

@@ -101,6 +101,7 @@ const TimeLine = () => {
       <audio ref={audioRef} />
       <div className='flex items-center justify-center gap-6'>
         <BasicButton
+          className='hidden md:block'
           onClick={() => backCurrentTime()}
           isDisabled={Boolean(
             !audioRef.current || !playerBarControl.currentTime,
@@ -109,6 +110,7 @@ const TimeLine = () => {
           <BackSeconds />
         </BasicButton>
         <BasicButton
+          className='hidden md:block'
           isDisabled={Boolean(
             currentMusic?.songs?.at(0)?.id === currentMusic?.song?.id,
           )}
@@ -118,11 +120,20 @@ const TimeLine = () => {
         </BasicButton>
 
         {!playerBarControl.isPlaying ? (
-          <PlayButton onClick={() => setPlay()} />
+          <PlayButton
+            className='md:bg-cod-gray-200'
+            iconClassName='md:text-black'
+            onClick={() => setPlay()}
+          />
         ) : (
-          <PauseButton onClick={() => setPause()} />
+          <PauseButton
+            className='md:bg-cod-gray-200'
+            iconClassName='md:text-black'
+            onClick={() => setPause()}
+          />
         )}
         <BasicButton
+          className='hidden md:block'
           isDisabled={Boolean(
             currentMusic?.songs?.at(-1)?.id === currentMusic?.song?.id,
           )}
@@ -131,6 +142,7 @@ const TimeLine = () => {
           <NextSong />
         </BasicButton>
         <BasicButton
+          className='hidden md:block'
           onClick={skipCurrentTime}
           isDisabled={Boolean(
             !audioRef.current || !playerBarControl.currentTime,
@@ -139,24 +151,17 @@ const TimeLine = () => {
           <SkipSeconds />
         </BasicButton>
       </div>
-      <div className='flex items-center justify-center md:gap-1'>
-        <TimeFormat
-          value={playerBarControl.currentTime}
-          className='hidden md:block'
-        />
+      <div className='hidden items-center justify-center md:flex md:gap-1'>
+        <TimeFormat value={playerBarControl.currentTime} />
 
         <Slider
-          className='hidden md:block'
           defaultValue={[playerBarControl.initialValue]}
           value={[playerBarControl.currentTime]}
           max={audioRef.current?.duration || playerBarControl.max}
           min={playerBarControl.min}
           onValueChange={(values) => onChangeProgressSong(values)}
         />
-        <TimeFormat
-          value={audioRef.current?.duration || 0}
-          className='hidden text-end md:block'
-        />
+        <TimeFormat value={audioRef.current?.duration || 0} />
       </div>
       {isFullScreen && <FullPlayer audioRef={audioRef} />}
     </div>

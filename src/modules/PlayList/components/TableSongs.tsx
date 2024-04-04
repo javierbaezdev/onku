@@ -102,18 +102,15 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
   return (
     <div className='content-pages relative animate-fade-in overflow-x-auto text-cod-gray-400 animate-delay-300'>
       <table className='w-full text-left text-sm rtl:text-right'>
-        <thead className='text-xs uppercase '>
+        <thead className='hidden text-xs uppercase md:contents'>
           <tr>
-            <th
-              scope='col'
-              className='hidden px-6 py-3 text-sm font-bold md:block md:w-3'
-            >
+            <th scope='col' className='px-6 py-3 text-sm font-bold  md:w-3'>
               #
             </th>
             <th scope='col' className='px-6 py-3'>
               Título
             </th>
-            <th scope='col' className='hidden px-6 py-3 md:block'>
+            <th scope='col' className='px-6 py-3'>
               Duración
             </th>
             <th scope='col' className='px-6 py-3'></th>
@@ -125,7 +122,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
             <tr key={song.id}>
               <td
                 scope='row'
-                className='hidden min-w-8 max-w-8 px-6 py-6 md:block'
+                className='py- max-h-8 min-h-8 min-w-8 max-w-8 px-6'
                 onMouseEnter={() => {
                   setIsHover(true)
                   setCurrentHoverIndex(index)
@@ -150,10 +147,10 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
                   }
                 />
               </td>
-              <td className='hidden px-6 py-6 md:block'>
+              <td className='hidden px-6 py-6 md:flex'>
                 <DurationSong urlSong={song.url} />
               </td>
-              <td className='px-6 py-6'>
+              <td className='flex justify-end px-6 py-6 md:table-cell'>
                 <Heart
                   onClick={() => handleFavoriteSong(song.id)}
                   className={twMerge(

@@ -11,13 +11,17 @@ const PlayButton = ({ className, iconClassName, ...rest }: Props) => {
     <button
       className={twMerge(
         clsx(
-          'flex size-9 items-center justify-center rounded-full bg-cod-gray-200',
+          'flex size-9 items-center justify-center rounded-full md:bg-cod-gray-200',
           className,
         ),
       )}
       {...rest}
     >
-      <Play className={twMerge(clsx('text-cod-gray-950', iconClassName))} />
+      <Play
+        className={twMerge(
+          clsx('text-cod-gray-50 md:text-cod-gray-950', iconClassName),
+        )}
+      />
     </button>
   )
 }
