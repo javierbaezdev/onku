@@ -16,7 +16,7 @@ import {
   VolumeMin,
   VolumeMute,
 } from '@/shared/icons'
-import { useAppStore } from '@/store'
+import { useAppPersistStore, useAppStore } from '@/store'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { RefObject, useMemo } from 'react'
@@ -37,7 +37,19 @@ const FullPlayer = ({ audioRef }: Props) => {
     onPreviewSong,
     volumeControl,
     setVolume,
+    deleteFavoriteSong,
   } = useAppStore((store) => store)
+  const { favoritesSongsIds, addNewFavoriteId, deleteFavoriteId } =
+    useAppPersistStore((store) => store)
+
+  const handleFavoriteSong = (songId: string) => {
+    if (favoritesSongsIds.includes(songId)) {
+      deleteFavoriteId(songId)
+      deleteFavoriteSong(songId)
+    } else {
+      addNewFavoriteId(songId)
+    }
+  }
 
   const onChangeVolume = (values: number[], isMute?: boolean) => {
     const [newVolume] = values
@@ -285,7 +297,15 @@ const FullPlayer = ({ audioRef }: Props) => {
               </Marquee>
             </div>
             <div className='min-w-7'>
-              <BasicButton className='text-carissma-600 hover:animate-tada'>
+              <BasicButton
+                onClick={() => handleFavoriteSong(currentMusic?.song?.id || '')}
+                className={twMerge(
+                  clsx('text-cod-gray-200', {
+                    'animate-tada text-carissma-500':
+                      favoritesSongsIds.includes(currentMusic?.song?.id || ''),
+                  }),
+                )}
+              >
                 <Heart width={24} height={24} />
               </BasicButton>
             </div>
