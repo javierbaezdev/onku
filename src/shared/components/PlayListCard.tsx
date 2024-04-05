@@ -6,7 +6,7 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { PATHS } from '@/modules/PlayList/paths'
 import { useAppStore } from '@/store'
-import { Image } from '.'
+import { Image, Marquee } from '.'
 
 interface Props extends PlayList {}
 
@@ -79,9 +79,14 @@ const PlayListCard = ({ cover, name, id, songs, fullCover }: Props) => {
           />
         )}
       </div>
-      <h3 className='line-clamp-1 w-full text-wrap text-sm text-cod-gray-200'>
-        {name}
-      </h3>
+      <div className='mr-auto w-[95%] overflow-hidden'>
+        <Marquee
+          className='justify-start text-sm text-cod-gray-200'
+          classNameContainer='justify-start'
+        >
+          {name}
+        </Marquee>
+      </div>
     </div>
   )
 }
