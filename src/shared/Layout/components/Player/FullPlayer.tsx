@@ -19,7 +19,7 @@ import {
 import { useAppPersistStore, useAppStore } from '@/store'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { RefObject, useEffect, useMemo } from 'react'
+import { RefObject, useMemo } from 'react'
 import { Slider } from '@/shared/components/inputs'
 
 interface Props {
