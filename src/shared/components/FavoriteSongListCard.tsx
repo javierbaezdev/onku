@@ -69,11 +69,11 @@ const FavoriteSongListCard = ({
         {!isPlayingCurrentFavoriteSong ? (
           <PlayButton
             className={twMerge(
-              clsx('absolute bottom-2 right-2 hidden bg-carissma-600', {
+              clsx('absolute bottom-2 right-2 hidden !bg-carissma-600', {
                 'flex scale-105 transition': isHover,
               }),
             )}
-            iconClassName='text-cod-gray-100'
+            iconClassName='!text-cod-gray-100'
             onClick={handlePlay}
           />
         ) : (

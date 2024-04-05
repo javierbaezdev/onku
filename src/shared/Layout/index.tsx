@@ -31,8 +31,8 @@ const Layout = ({ children }: Props) => {
         {/* sm */}
         <aside
           className={twMerge(
-            clsx('hidden h-full w-full overflow-hidden p-2', {
-              'fixed left-0 top-0 z-40 flex': isOpen,
+            clsx('hidden h-screen w-screen overflow-hidden p-2', {
+              'fixed left-0 top-0 z-40 block': isOpen,
               'h-[calc(100%_-_5rem)]': isOpen && currentMusic?.song,
             }),
           )}

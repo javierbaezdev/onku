@@ -41,13 +41,13 @@ const Song = () => {
               height='60px'
               src={currentMusic?.song?.cover || MIN_LOGO}
             />
-            <div className='flex flex-col gap-2 sm:max-w-[50%]'>
+            <div className='flex flex-col gap-1 overflow-hidden sm:max-w-[50%]'>
               <Marquee className='text-sm' classNameContainer=''>
                 {currentMusic?.song?.name || ''}
               </Marquee>
               <Marquee
                 className='!mb-auto text-xs text-cod-gray-400'
-                classNameContainer=''
+                classNameContainer='md:max-h-5'
               >
                 {currentMusic?.playList?.name || ''}
               </Marquee>
