@@ -23,16 +23,23 @@ const Layout = ({ children }: Props) => {
           }),
         )}
       >
+        {/* md */}
+        <aside className='hidden md:block md:min-w-[320px] md:max-w-[320px]'>
+          <Aside />
+        </aside>
+
+        {/* sm */}
         <aside
           className={twMerge(
-            clsx('hidden md:block md:min-w-[320px] md:max-w-[320px]', {
-              'fixed z-40 block h-full w-full': isOpen,
+            clsx('hidden h-full w-full overflow-hidden p-2', {
+              'fixed left-0 top-0 z-40 flex': isOpen,
               'h-[calc(100%_-_5rem)]': isOpen && currentMusic?.song,
             }),
           )}
         >
           <Aside />
         </aside>
+
         <BasicButton
           onClick={onToggle}
           className='fixed right-3 top-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-cod-gray-400/70 p-2 hover:animate-tada md:hidden'
@@ -43,7 +50,7 @@ const Layout = ({ children }: Props) => {
             <Heart className='text-carissma-100' />
           )}
         </BasicButton>
-        <main className='content-pages overflow-hidden rounded-md bg-gradient-to-b from-carissma-950/50 to-cod-gray-950 p-2 md:w-full md:overflow-y-auto md:overflow-x-hidden'>
+        <main className='content-pages w-full overflow-hidden rounded-md bg-gradient-to-b from-carissma-950/50 to-cod-gray-950 p-2 md:w-full md:overflow-y-auto md:overflow-x-hidden'>
           {children}
         </main>
       </div>

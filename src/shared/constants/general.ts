@@ -2,15 +2,17 @@ import minLogo from '@/assets/logos/min.svg'
 import favoriteImg from '@/assets/favorite.webp'
 import grayImg from '@/assets/gray.webp'
 import pxfuelImg from '@/assets/pxfuel.webp'
+import logoFull from '@/assets/logos/full.svg'
 import { PlayList } from '@/modules/PlayList/types'
 import { useMediaQuery } from 'react-responsive'
 export const BASE_URL_API: string = import.meta.env.VITE_WORKER_URL
 
-export const FAKE_DELAY_ROUTER = 2000
+export const FAKE_DELAY_ROUTER = 1500
 export const PLAY_LIST_COUNT = 20
 
 export const MIN_LOGO = minLogo
 export const GRAY_IMG = grayImg
+export const FULL_LOGO = logoFull
 
 const BREAK_POINTS_SCREEN = {
   SM: '640px',

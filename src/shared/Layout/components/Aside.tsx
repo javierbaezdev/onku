@@ -44,7 +44,7 @@ const Aside = () => {
     }
   }
   return (
-    <div className='flex h-full flex-col rounded-b-md bg-cod-gray-950'>
+    <div className='flex h-full flex-col overflow-hidden rounded-b-md bg-cod-gray-950'>
       <div className='flex flex-col gap-2 bg-black'>
         <div className=' flex flex-row items-center gap-2 rounded-md bg-cod-gray-950 p-6  text-cod-gray-300'>
           <Home />
@@ -63,7 +63,7 @@ const Aside = () => {
         </div>
       </div>
 
-      <div className='content-pages mb-2 ml-4 mr-2 flex h-full flex-col gap-4 overflow-hidden bg-cod-gray-950 hover:overflow-y-auto'>
+      <div className='content-pages mb-2 ml-4 mr-2 flex h-full flex-col gap-4 overflow-hidden bg-cod-gray-950 hover:overflow-y-auto md:pr-2'>
         {isLoading && isError && (
           <Alert msg='¡Lista de favoritos no disponible!' />
         )}
