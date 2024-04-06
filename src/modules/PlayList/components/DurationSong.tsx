@@ -1,5 +1,5 @@
 import { formatTime } from '@/shared/utils'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 interface Props {
   urlSong: string
@@ -7,15 +7,16 @@ interface Props {
 
 const DurationSong = ({ urlSong }: Props) => {
   const audioRef = useRef<HTMLAudioElement>(null)
+  const [duration, setDuration] = useState(0)
   const onLoadedMetadata = () => {
     if (audioRef.current) {
-      console.log(formatTime(audioRef.current.duration))
+      setDuration(audioRef.current.duration)
     }
   }
   return (
     <>
       <audio ref={audioRef} onLoadedMetadata={onLoadedMetadata} src={urlSong} />
-      <p>{formatTime(audioRef?.current?.duration || 0)}</p>
+      <p>{formatTime(duration)}</p>
     </>
   )
 }
