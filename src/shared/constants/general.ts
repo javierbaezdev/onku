@@ -7,7 +7,7 @@ import { PlayList } from '@/modules/PlayList/types'
 import { useMediaQuery } from 'react-responsive'
 export const BASE_URL_API: string = import.meta.env.VITE_WORKER_URL
 
-export const FAKE_DELAY_ROUTER = 1500
+export const FAKE_DELAY_ROUTER = 1000
 export const PLAY_LIST_COUNT = 20
 
 export const MIN_LOGO = minLogo

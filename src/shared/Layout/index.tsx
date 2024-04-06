@@ -13,7 +13,8 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   const currentMusic = useAppStore((store) => store.currentMusic)
-  const { isOpen, onToggle } = useOpen()
+  const { isOpen, onToggle, onClose } = useOpen()
+
   return (
     <div className='relative h-screen w-screen bg-black p-2 font-bold text-white'>
       <div
@@ -37,7 +38,7 @@ const Layout = ({ children }: Props) => {
             }),
           )}
         >
-          <Aside />
+          <Aside hiddenAsideMobile={() => onClose()} />
         </aside>
 
         <BasicButton

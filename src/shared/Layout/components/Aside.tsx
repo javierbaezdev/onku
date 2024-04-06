@@ -7,7 +7,11 @@ import { Home, Library } from '@/shared/icons'
 import { useAppPersistStore, useAppStore } from '@/store'
 import { useEffect } from 'react'
 
-const Aside = () => {
+interface Props {
+  hiddenAsideMobile?: () => void
+}
+
+const Aside = ({ hiddenAsideMobile }: Props) => {
   const favoritesSongsIds = useAppPersistStore(
     (store) => store.favoritesSongsIds,
   )
@@ -35,6 +39,7 @@ const Aside = () => {
   }, [favorites])
 
   const goHome = () => {
+    hiddenAsideMobile && hiddenAsideMobile()
     if (window.location.pathname !== `/${PATHS.PLAY_LISTS.CLI}`) {
       setCurrentRoute(`/${PATHS.PLAY_LISTS.CLI}`)
 
