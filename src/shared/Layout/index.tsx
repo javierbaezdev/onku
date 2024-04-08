@@ -39,7 +39,7 @@ const Layout = ({ children }: Props) => {
     >
       <div
         className={twMerge(
-          clsx('flex h-full w-full flex-row gap-2 md:h-[calc(100%_-_5rem)]', {
+          clsx('flex h-svh w-full flex-row gap-2 md:h-[calc(100%_-_5rem)]', {
             'h-[calc(100%_-_5rem)]': currentMusic?.song,
           }),
         )}
