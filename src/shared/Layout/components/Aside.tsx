@@ -61,7 +61,7 @@ const Aside = ({ hiddenAsideMobile }: Props) => {
         <div className='flex flex-row justify-between rounded-t-md bg-cod-gray-950 p-6  pb-6 text-cod-gray-300'>
           <div className='flex flex-row gap-2'>
             <Library />
-            <h3 className='text-md'>Tus favoritos</h3>
+            <h3 className='text-md cursor-default'>Tus favoritos</h3>
           </div>
 
           {isLoading && <Min01 />}

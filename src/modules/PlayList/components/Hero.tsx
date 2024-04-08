@@ -69,7 +69,7 @@ const Hero = ({ playListId, cover, playListName, playListToStore }: Props) => {
       </div>
       {playListName && (
         <div className='mr-2 mt-auto flex w-full flex-col justify-start overflow-hidden'>
-          <h4 className='line-clamp-1 text-xs text-cod-gray-400'>
+          <h4 className='line-clamp-1 cursor-default text-xs text-cod-gray-400'>
             Lista de reproducción
           </h4>
 

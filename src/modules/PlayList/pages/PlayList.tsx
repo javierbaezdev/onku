@@ -20,7 +20,7 @@ const PlayListComponent = () => {
 
   return (
     <div className='flex animate-fade-in flex-col gap-2 animate-delay-100'>
-      <h1 className='pl-2 text-lg font-semibold text-cod-gray-200'>
+      <h1 className='cursor-default pl-2 text-lg font-semibold text-cod-gray-200'>
         Lista de reproducciones
       </h1>
       {!isLoading && isError && (

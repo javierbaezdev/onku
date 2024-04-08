@@ -6,6 +6,7 @@ import { useAppStore } from '@/store'
 import { BasicButton } from '../components/buttons'
 import { Close, Heart } from '../icons'
 import { useOpen } from '../hooks'
+import { useEffect, useRef } from 'react'
 
 interface Props {
   children: JSX.Element
@@ -13,10 +14,29 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   const currentMusic = useAppStore((store) => store.currentMusic)
+  const divRef = useRef<HTMLDivElement>(null)
   const { isOpen, onToggle, onClose } = useOpen()
 
+  const handleContextMenu = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    event.preventDefault()
+  }
+
+  useEffect(() => {
+    if (divRef.current) {
+      divRef.current.onselectstart = function () {
+        return false
+      }
+    }
+  }, [])
+
   return (
-    <div className='relative h-screen w-screen bg-black p-2 font-bold text-white'>
+    <div
+      ref={divRef}
+      className='relative h-screen w-screen bg-black p-2 font-bold text-white'
+      onContextMenu={handleContextMenu}
+    >
       <div
         className={twMerge(
           clsx('flex h-full w-full flex-row gap-2 md:h-[calc(100%_-_5rem)]', {

@@ -161,7 +161,7 @@ const FullPlayer = ({ audioRef }: Props) => {
               </div>
             </div>
             <div className=' flex h-full w-full items-center'>
-              <ul className='content-pages  max-h-[170px] w-full overflow-y-auto'>
+              <ul className='content-pages  max-h-[170px] w-full cursor-default overflow-y-auto'>
                 {currentMusic?.songs?.map((song, index) => (
                   <li
                     key={song.id}

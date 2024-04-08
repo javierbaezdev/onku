@@ -96,7 +96,7 @@ const FavoriteSongListCard = ({
           {name}
         </Marquee>
         <div className='flex flex-row gap-2'>
-          <h4 className='line-clamp-1 text-xs text-cod-gray-400'>
+          <h4 className='line-clamp-1 cursor-default text-xs text-cod-gray-400'>
             {playListName}
           </h4>
           {isPlayingCurrentFavoriteSong && (

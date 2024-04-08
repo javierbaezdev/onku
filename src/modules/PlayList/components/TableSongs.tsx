@@ -102,7 +102,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
   return (
     <div className='content-pages relative animate-fade-in overflow-x-auto text-cod-gray-400 animate-delay-300'>
       <table className='w-full text-left text-sm rtl:text-right'>
-        <thead className='hidden text-xs uppercase md:contents'>
+        <thead className='hidden cursor-default text-xs uppercase md:contents'>
           <tr>
             <th scope='col' className='px-6 py-3 text-sm font-bold  md:w-3'>
               #
@@ -147,7 +147,7 @@ const TableSongs = ({ songs, playListToStore }: Props) => {
                   }
                 />
               </td>
-              <td className='hidden px-6 py-6 md:flex'>
+              <td className='hidden cursor-default px-6 py-6 md:flex'>
                 <DurationSong urlSong={song.url} />
               </td>
               <td className='flex justify-end px-6 py-6 md:table-cell'>
