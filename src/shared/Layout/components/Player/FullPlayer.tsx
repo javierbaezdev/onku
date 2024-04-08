@@ -263,7 +263,7 @@ const FullPlayer = ({ audioRef }: Props) => {
         </div>
       </div>
       {/* sm */}
-      <div className='fixed inset-0 z-[9000] flex h-svh w-screen animate-pulse-fade-in bg-carissma-400 bg-gradient-to-b from-carissma-950/50 to-carissma-950 md:hidden'>
+      <div className='fixed inset-0 z-[9000] flex h-dvh w-screen animate-pulse-fade-in bg-carissma-400 bg-gradient-to-b from-carissma-950/50 to-carissma-950 md:hidden'>
         <div className='flex h-full w-full flex-col gap-4'>
           <BasicButton
             className='m-2 ml-auto rounded-full bg-carissma-700 p-2 hover:scale-110'

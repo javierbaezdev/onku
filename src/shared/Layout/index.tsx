@@ -34,12 +34,12 @@ const Layout = ({ children }: Props) => {
   return (
     <div
       ref={divRef}
-      className='relative h-screen w-screen bg-black p-2 font-bold text-white'
+      className='relative h-dvh w-screen bg-black p-2 font-bold text-white'
       onContextMenu={handleContextMenu}
     >
       <div
         className={twMerge(
-          clsx('flex h-svh w-full flex-row gap-2 md:h-[calc(100%_-_5rem)]', {
+          clsx('flex h-dvh w-full flex-row gap-2 md:h-[calc(100%_-_5rem)]', {
             'h-[calc(100%_-_5rem)]': currentMusic?.song,
           }),
         )}
